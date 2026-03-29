@@ -11,6 +11,16 @@ Product copy lives in **`src/lib/site.ts`**. Canonical URL for OG + sitemap: **`
 3. Add **`NEXT_PUBLIC_APP_STORE_URL`** / **`NEXT_PUBLIC_PLAY_STORE_URL`** when listings are live.
 4. Add **`NEXT_PUBLIC_CONTACT_EMAIL`** for support / inquiries.
 
+### If `*.vercel.app` returns **404** for `/`
+
+That almost always means Vercel is building from the **wrong folder**. This repo is a **monorepo**: the Next.js app only lives under **`landing/`**.
+
+1. Open the project on Vercel → **Settings** → **General**.
+2. Under **Root Directory**, set **`landing`** (not the repository root), then save.
+3. Trigger a new deployment (**Deployments** → **⋯** on the latest → **Redeploy**).
+
+Until this is set, Vercel may finish a build with nothing to serve at `/`, so **GET** and **HEAD** `/` return **404**. Scripts such as **`feedback.js`** (Vercel / browser tooling) can show **HEAD … 404** for the same reason.
+
 ## Local
 
 ```bash
