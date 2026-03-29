@@ -6,28 +6,49 @@ Product copy lives in **`src/lib/site.ts`**. Canonical URL for OG + sitemap: **`
 
 ## Deploy (Vercel)
 
-1. Connect the GitHub repo (this folder as root, or monorepo with **Root Directory** = `landing`).
-2. Set environment variables from **`.env.example`** — at minimum **`NEXT_PUBLIC_SITE_URL`** for correct social previews and sitemap.
-3. Add **`NEXT_PUBLIC_APP_STORE_URL`** / **`NEXT_PUBLIC_PLAY_STORE_URL`** when listings are live.
-4. Add **`NEXT_PUBLIC_CONTACT_EMAIL`** for support / inquiries.
+### A — This repo is **only** the landing app (files at the root: `package.json`, `src/`, …)
+
+This is the usual setup when you push **`CarePair/landing`** contents as their **own** GitHub repository.
+
+1. **Root Directory in Vercel:** leave it **empty** or **`.`** (project root). **Do not** set it to `landing` — there is no `landing` subfolder; that setting is only for monorepos.
+2. Framework preset: **Next.js** (auto-detected from `package.json`).
+3. Build: default **`npm run build`** (or leave blank). Install: **`npm install`** or **`npm ci`** if you commit **`package-lock.json`**.
+4. Set environment variables from **`.env.example`** — at minimum **`NEXT_PUBLIC_SITE_URL`** for correct social previews and sitemap.
+5. Add **`NEXT_PUBLIC_APP_STORE_URL`** / **`NEXT_PUBLIC_PLAY_STORE_URL`** when listings are live.
+6. Add **`NEXT_PUBLIC_CONTACT_EMAIL`** for support / inquiries.
+
+### B — This repo is the **full CarePair monorepo** (`mobile/`, `server/`, `landing/`, …)
+
+1. **Root Directory in Vercel:** set to **`landing`**.
+2. Same env vars as above.
 
 ### If `*.vercel.app` returns **404** for `/`
 
-That almost always means Vercel is building from the **wrong folder**. This repo is a **monorepo**: the Next.js app only lives under **`landing/`**.
+- **Standalone repo (A):** Root Directory must **not** be `landing`. Clear it and redeploy.
+- **Monorepo (B):** Root Directory **must** be `landing`. Set it and redeploy.
 
-1. Open the project on Vercel → **Settings** → **General**.
-2. Under **Root Directory**, set **`landing`** (not the repository root), then save.
-3. Trigger a new deployment (**Deployments** → **⋯** on the latest → **Redeploy**).
+## GitHub Actions
 
-Until this is set, Vercel may finish a build with nothing to serve at `/`, so **GET** and **HEAD** `/` return **404**. Scripts such as **`feedback.js`** (Vercel / browser tooling) can show **HEAD … 404** for the same reason.
+- **Standalone landing repo:** use **`.github/workflows/ci.yml`** in this folder (lint + build at repo root). **Do not** use the monorepo workflow that references `mobile/` and `server/` — it will always fail.
+- **Monorepo:** CI for this app is typically configured at the monorepo root with `working-directory: landing` (or deploy only from this subtree).
 
 ## Local
+
+**Standalone repo** (you cloned a repo whose root is this app):
+
+```bash
+npm install
+cp .env.example .env.local
+# edit .env.local
+npm run dev
+```
+
+**Inside the CarePair monorepo** on your machine:
 
 ```bash
 cd landing
 npm install
 cp .env.example .env.local
-# edit .env.local
 npm run dev
 ```
 
