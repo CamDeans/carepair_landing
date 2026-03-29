@@ -1,0 +1,4 @@
+# Excluded from Vercel upload when using CLI deploy; GitHub→Vercel uses the git tree only.
+.cursorrules
+.cursorignore
+VORTEX*.md

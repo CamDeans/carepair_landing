@@ -1,0 +1,14 @@
+# CarePair landing — Cursor rules
+
+## Local-only docs
+**Vortex** files in this folder (`VORTEX*.md`) are **gitignored** — local planning only. Public deploy/env guidance: **`README.md`** and **`.env.example`**. Product alignment: monorepo **`mobile/src/theme/tokens.ts`** and **`src/lib/site.ts`** for marketing copy.
+
+## Stack
+- Next.js App Router, TypeScript, Tailwind.
+- Deploy: Vercel (default). No secrets required for a static marketing build.
+
+## Paths
+- `src/app/` — routes, layout, `robots.ts`, `sitemap.ts`, `not-found.tsx`
+- `src/lib/site.ts` — marketing copy; `siteUrl.ts` — canonical origin
+- `src/components/` — header, footer, store CTAs, JSON-LD
+- `vercel.json` — security headers
