@@ -11,9 +11,9 @@ Product copy lives in **`src/lib/site.ts`**. Canonical URL for OG + sitemap: **`
 This is the usual setup when you push **`CarePair/landing`** contents as their **own** GitHub repository.
 
 1. **Root Directory in Vercel:** leave it **empty** or **`.`** (project root). **Do not** set it to `landing` — there is no `landing` subfolder; that setting is only for monorepos.
-2. Framework preset: **Next.js** (auto-detected from `package.json`).
-3. Build: default **`npm run build`** (or leave blank). Install: **`npm install`** or **`npm ci`** if you commit **`package-lock.json`**.
-4. Set environment variables from **`.env.example`** — at minimum **`NEXT_PUBLIC_SITE_URL`** for correct social previews and sitemap.
+2. Framework preset: **Next.js** (the repo includes **`vercel.json`** with `"framework": "nextjs"` to reinforce this).
+3. **Build & Development Settings:** use default **Build** (`npm run build`) and **Install** (`npm install`, or `npm ci` if **`package-lock.json`** is committed). **Output Directory must be empty** — if it is set to `out`, `dist`, or `.next/export`, you will get **404** on `/`.
+4. Set environment variables from **`.env.example`** — **`NEXT_PUBLIC_SITE_URL`** should include **`https://`** (e.g. `https://carepair-landing.vercel.app`). If unset, the app uses **`VERCEL_URL`** at build time when Vercel provides it, else `https://carepair.app`.
 5. Add **`NEXT_PUBLIC_APP_STORE_URL`** / **`NEXT_PUBLIC_PLAY_STORE_URL`** when listings are live.
 6. Add **`NEXT_PUBLIC_CONTACT_EMAIL`** for support / inquiries.
 
@@ -26,6 +26,8 @@ This is the usual setup when you push **`CarePair/landing`** contents as their *
 
 - **Standalone repo (A):** Root Directory must **not** be `landing`. Clear it and redeploy.
 - **Monorepo (B):** Root Directory **must** be `landing`. Set it and redeploy.
+- **Any setup:** In **Settings → General → Build & Development Settings**, ensure **Output Directory** is **empty**. A wrong value here is a common cause of **404** on otherwise “successful” builds.
+- Open the latest **Deployment → Build Logs** and confirm **`next build`** completed and there is no framework mismatch.
 
 ## GitHub Actions
 
