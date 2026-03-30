@@ -1,17 +1,13 @@
 import type { Config } from 'tailwindcss';
 
+/** Typography bridge — colors come from globals.css `--cp-*` variables. See `brand/CAREPAIR-VISUAL-SPEC.md`. */
 const config: Config = {
   content: ['./src/**/*.{js,ts,jsx,tsx,mdx}'],
   theme: {
     extend: {
-      colors: {
-        primary: { DEFAULT: '#0d9488', dark: '#0f766e', muted: '#ccfbf1' },
-        surface: '#ffffff',
-        canvas: '#f8fafc',
-        ink: { DEFAULT: '#0f172a', muted: '#64748b' },
-      },
       fontFamily: {
-        sans: ['system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif'],
+        sans: ['var(--font-plus-jakarta)', 'Plus Jakarta Sans', 'system-ui', 'sans-serif'],
+        heading: ['var(--font-plus-jakarta)', 'Plus Jakarta Sans', 'system-ui', 'sans-serif'],
       },
     },
   },

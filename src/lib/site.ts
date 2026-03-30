@@ -57,7 +57,35 @@ export const site = {
     'You control who you match and message with.',
     'Native apps allow us to meet platform security and notification standards.',
   ],
+  contact: {
+    sectionTitle: 'Support, partnerships & early access',
+    sectionIntro:
+      'Choose a topic and write your note. Your email app opens with a pre-filled message — nothing is sent until you confirm.',
+    formTopicLabel: 'Topic',
+    formNameLabel: 'Name (optional)',
+    formEmailLabel: 'Your email (optional)',
+    formEmailHelp: 'So we can reply if your “from” address is not obvious.',
+    formMessageLabel: 'Message',
+    formMessagePlaceholder: 'How can we help?',
+    formSubmitLabel: 'Open in email app',
+    formHint:
+      'This site does not transmit your message directly. It only prepares an email draft in your own mail client.',
+    validationShort: 'Please add a bit more detail (at least 10 characters).',
+    validationEmail: 'If you enter an email, use a valid address.',
+    noChannelTitle: 'Contact channel not live yet',
+    noChannelBody:
+      'Our public inbox is not configured on this deployment. When the apps launch, use store listings for installs and check back here for a contact form.',
+  },
 } as const;
+
+/** Used by the contact inquiry form (client-safe labels). */
+export const CONTACT_INQUIRY_TOPICS = [
+  { id: 'support', label: 'Product support' },
+  { id: 'partnership', label: 'Partnership or organization' },
+  { id: 'early-access', label: 'Early access' },
+  { id: 'press', label: 'Press or media' },
+  { id: 'other', label: 'Other' },
+] as const;
 
 export function storeLinks() {
   return {

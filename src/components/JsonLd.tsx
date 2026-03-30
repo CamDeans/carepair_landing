@@ -10,6 +10,7 @@ export function JsonLdOrganization() {
     description:
       'Relationship-first marketplace connecting families and caregivers for childcare. Native iOS and Android apps.',
     url: origin,
+    logo: `${origin}/brand/logo-mark.svg`,
     areaServed: {
       '@type': 'City',
       name: 'Calgary',

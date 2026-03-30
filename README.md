@@ -15,7 +15,7 @@ This is the usual setup when you push **`CarePair/landing`** contents as their *
 3. **Build & Development Settings:** use default **Build** (`npm run build`) and **Install** (`npm install`, or `npm ci` if **`package-lock.json`** is committed). **Output Directory must be empty** — if it is set to `out`, `dist`, or `.next/export`, you will get **404** on `/`.
 4. Set environment variables from **`.env.example`** — **`NEXT_PUBLIC_SITE_URL`** should include **`https://`** (e.g. `https://carepair-landing.vercel.app`). If unset, the app uses **`VERCEL_URL`** at build time when Vercel provides it, else `https://carepair.app`.
 5. Add **`NEXT_PUBLIC_APP_STORE_URL`** / **`NEXT_PUBLIC_PLAY_STORE_URL`** when listings are live.
-6. Add **`NEXT_PUBLIC_CONTACT_EMAIL`** for support / inquiries.
+6. Set **`NEXT_PUBLIC_CONTACT_EMAIL`** to a monitored inbox — it powers the **`/contact`** inquiry form (mailto drafts with topic + message). Without it, visitors see a polite “not configured” state.
 
 ### B — This repo is the **full CarePair monorepo** (`mobile/`, `server/`, `landing/`, …)
 
@@ -53,6 +53,14 @@ npm install
 cp .env.example .env.local
 npm run dev
 ```
+
+## Brand & shared assets
+
+Canonical files live in the monorepo **`brand/`** folder (`logo-mark.svg`, `tokens.json`). The marketing site serves the mark from **`public/brand/`** (keep identical to `brand/logo-mark.svg` when you edit). See **`brand/README.md`** and **`brand/LOOP-BRAND-AND-ASSETS.md`** (Vortex-style **God 3 / 6 / 9** checklist). If this repo is **landing-only**, copy `brand/*` into `public/brand/` and document palette in your README fork.
+
+## Contact & inquiries (production loop)
+
+See **`LOOP-LANDING-CONTACT.md`** for the staged checklist (ship → Vercel env → optional server-side form). The live UI is **`/contact`** and the **`#contact`** section on the home page.
 
 ## Legal
 

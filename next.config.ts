@@ -8,6 +8,11 @@ const securityHeaders = [
 
 const nextConfig: NextConfig = {
   reactStrictMode: true,
+  images: {
+    dangerouslyAllowSVG: true,
+    contentDispositionType: 'attachment',
+    contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
+  },
   /** Security headers live here (not vercel.json) so routing is handled only by Next.js. */
   async headers() {
     return [
@@ -16,7 +21,7 @@ const nextConfig: NextConfig = {
   },
   /** Browsers still request `/favicon.ico` by default; we ship a PNG and serve it for that path. */
   async rewrites() {
-    return [{ source: '/favicon.ico', destination: '/icon.png' }];
+    return [{ source: '/favicon.ico', destination: '/brand/logo-mark.svg' }];
   },
 };
 
