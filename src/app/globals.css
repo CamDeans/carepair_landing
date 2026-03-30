@@ -535,6 +535,7 @@
   .header-cp {
     background: rgba(255, 255, 255, 0.96);
     border-bottom: 1px solid var(--cp-border);
+    -webkit-backdrop-filter: blur(8px);
     backdrop-filter: blur(8px);
   }
 
@@ -588,9 +589,10 @@
 .cp-reveal {
   opacity: 0;
   transform: translateY(12px);
+  /* Optional stagger: set --cp-reveal-delay on the element (e.g. from RevealOnView). */
   transition:
-    opacity 380ms var(--cp-ease),
-    transform 380ms var(--cp-ease);
+    opacity 380ms var(--cp-ease) var(--cp-reveal-delay, 0ms),
+    transform 380ms var(--cp-ease) var(--cp-reveal-delay, 0ms);
 }
 
 .cp-reveal.cp-reveal--visible {

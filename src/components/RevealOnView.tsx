@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useRef, useState, type ReactNode } from 'react';
+import { useEffect, useLayoutEffect, useRef, useState, type ReactNode } from 'react';
 
 type Props = {
   children: ReactNode;
@@ -9,12 +9,24 @@ type Props = {
   delayMs?: number;
 };
 
+const useIsomorphicLayoutEffect = typeof window !== 'undefined' ? useLayoutEffect : useEffect;
+
 /**
  * Fades/slides content in when it enters the viewport. Spec: ~380ms, translateY 12px → 0, ease-out.
  */
 export function RevealOnView({ children, className = '', delayMs = 0 }: Props) {
   const ref = useRef<HTMLDivElement>(null);
   const [visible, setVisible] = useState(false);
+
+  useIsomorphicLayoutEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    if (delayMs > 0) {
+      el.style.setProperty('--cp-reveal-delay', `${delayMs}ms`);
+    } else {
+      el.style.removeProperty('--cp-reveal-delay');
+    }
+  }, [delayMs]);
 
   useEffect(() => {
     const el = ref.current;
@@ -37,8 +49,7 @@ export function RevealOnView({ children, className = '', delayMs = 0 }: Props) {
   return (
     <div
       ref={ref}
-      className={`cp-reveal ${visible ? 'cp-reveal--visible' : ''} ${className}`.trim()}
-      style={delayMs > 0 ? { transitionDelay: visible ? `${delayMs}ms` : '0ms' } : undefined}>
+      className={`cp-reveal ${visible ? 'cp-reveal--visible' : ''} ${className}`.trim()}>
       {children}
     </div>
   );
