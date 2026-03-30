@@ -1,12 +1,14 @@
 import type { Metadata } from 'next';
+import Link from 'next/link';
 
 import { SiteFooter } from '@/components/SiteFooter';
 import { SiteHeader } from '@/components/SiteHeader';
+import { privacyPage as privacyCopy } from '@/content/legal';
 import { site } from '@/lib/site';
 
 export const metadata: Metadata = {
   title: 'Privacy policy',
-  description: `How ${site.name} handles information on this marketing website and how the mobile apps treat your data at a high level.`,
+  description: privacyCopy.metaDescription,
 };
 
 export default function PrivacyPage() {
@@ -16,6 +18,7 @@ export default function PrivacyPage() {
       <article className="mx-auto max-w-3xl flex-1 px-4 py-12 sm:px-6 sm:py-16" id="main">
         <h1 className="text-3xl font-semibold">Privacy policy</h1>
         <p className="mt-2 text-sm font-medium text-[var(--cp-primary)]">Last updated: March 29, 2026</p>
+        <p className="mt-6 text-sm leading-relaxed text-[var(--cp-ink-muted)]">{privacyCopy.intro}</p>
 
         <div className="mt-8 max-w-none space-y-3 text-sm leading-relaxed text-[var(--cp-ink-muted)]">
           <p className="notice-cp">
@@ -30,6 +33,7 @@ export default function PrivacyPage() {
             the service. The mobile apps are the primary place where accounts, profiles, messaging, and payments are
             handled.
           </p>
+          <p className="mt-3">{privacyCopy.whoWeAreExtra}</p>
 
           <h2 className="mt-10 text-lg font-semibold">What this site collects</h2>
           <p className="mt-3">
@@ -37,6 +41,7 @@ export default function PrivacyPage() {
             pages viewed) as configured by your hosting provider (such as Vercel). If you add analytics or cookies, list
             them here with purpose and retention.
           </p>
+          <p className="mt-3">{privacyCopy.siteCollectsExtra}</p>
 
           <h2 className="mt-10 text-lg font-semibold">What the apps collect (summary)</h2>
           <p className="mt-3">
@@ -45,18 +50,33 @@ export default function PrivacyPage() {
             provider. A complete statement must list categories, purposes, legal bases (where GDPR/PIPEDA apply),
             subprocessors, retention, and user rights.
           </p>
+          <p className="mt-3">{privacyCopy.appsCollectExtra}</p>
+
+          <h2 className="mt-10 text-lg font-semibold">{privacyCopy.retentionTitle}</h2>
+          <p className="mt-3">{privacyCopy.retentionBody}</p>
+
+          <h2 className="mt-10 text-lg font-semibold">{privacyCopy.rightsTitle}</h2>
+          <p className="mt-3">{privacyCopy.rightsBody}</p>
+
+          <h2 className="mt-10 text-lg font-semibold">{privacyCopy.securityTitle}</h2>
+          <p className="mt-3">{privacyCopy.securityBody}</p>
 
           <h2 className="mt-10 text-lg font-semibold">Children</h2>
           <p className="mt-3">
             {site.name} is a tool for adults arranging care. Do not use the service in a way that violates child-privacy
             laws. Your final policy should spell out age limits and parental roles clearly.
           </p>
+          <p className="mt-3">{privacyCopy.childrenExtra}</p>
 
           <h2 className="mt-10 text-lg font-semibold">Contact</h2>
           <p className="mt-3">
-            For privacy requests, publish a dedicated email or web form after counsel review. Until then, use the contact
-            address published on the home page when configured.
+            For privacy requests, publish a dedicated email or web form after counsel review. Until then, use the{' '}
+            <Link href="/contact" className="link-cp">
+              Contact
+            </Link>{' '}
+            page when a public address is configured.
           </p>
+          <p className="mt-3">{privacyCopy.contactExtra}</p>
         </div>
       </article>
       <SiteFooter />

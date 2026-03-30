@@ -1,9 +1,12 @@
 import Link from 'next/link';
 
-import { ContactInquirySection } from '@/components/ContactInquirySection';
+import { MediaPlaceholder } from '@/components/MediaPlaceholder';
+import { RevealOnView } from '@/components/RevealOnView';
 import { SiteFooter } from '@/components/SiteFooter';
 import { SiteHeader } from '@/components/SiteHeader';
 import { StoreCtas } from '@/components/StoreCtas';
+import { homeVisual } from '@/content/about';
+import { homePage } from '@/content/pages';
 import { site } from '@/lib/site';
 
 function HeroHeadline() {
@@ -28,89 +31,101 @@ export default function HomePage() {
       <SiteHeader />
 
       <main className="flex-1" id="main">
-        <section
-          className="bg-[var(--cp-bg)]"
-          aria-labelledby="hero-heading">
+        <section className="bg-[var(--cp-bg)]" aria-labelledby="hero-heading">
           <div className="mx-auto max-w-5xl px-4 py-16 sm:px-6 sm:py-24">
-            <p className="hero-eyebrow">{site.tagline}</p>
-            <h1 id="hero-heading" className="hero-headline max-w-3xl">
-              <HeroHeadline />
-            </h1>
-            <p className="hero-sub">{site.hero.sub}</p>
-
-            <div className="hero-cta-row flex-col sm:flex-row">
-              <StoreCtas />
+            <div className="grid items-start gap-12 lg:grid-cols-[1fr_minmax(220px,340px)]">
+              <div>
+                <RevealOnView>
+                  <p className="hero-eyebrow">{site.tagline}</p>
+                </RevealOnView>
+                <RevealOnView delayMs={60}>
+                  <h1 id="hero-heading" className="hero-headline max-w-3xl">
+                    <HeroHeadline />
+                  </h1>
+                </RevealOnView>
+                <RevealOnView delayMs={100}>
+                  <p className="hero-sub">{site.hero.sub}</p>
+                </RevealOnView>
+                <RevealOnView delayMs={140}>
+                  <div className="hero-cta-row flex-col sm:flex-row">
+                    <StoreCtas />
+                  </div>
+                </RevealOnView>
+                <RevealOnView delayMs={180}>
+                  <p className="hero-social-proof">
+                    <span>
+                      <strong>Support, partnerships, or early access?</strong>{' '}
+                      <Link href="/contact" className="link-cp">
+                        Go to contact
+                      </Link>
+                      .
+                    </span>
+                  </p>
+                </RevealOnView>
+              </div>
+              <RevealOnView delayMs={120}>
+                <MediaPlaceholder
+                  ratio="9/16"
+                  label="App preview — add phone screenshot or short loop"
+                  hint="Aligns with the native UI: discovery, chat, or CareSpace."
+                  className="mx-auto max-w-[280px] lg:mx-0 lg:max-w-none"
+                />
+              </RevealOnView>
             </div>
-            <p className="hero-social-proof">
-              <span>
-                <strong>Support, partnerships, or early access?</strong>{' '}
-                <Link href="/contact" className="link-cp">
-                  Contact
-                </Link>
-                {' · '}
-                <Link href="/#contact" className="link-cp">
-                  Form below
-                </Link>
-              </span>
-            </p>
           </div>
         </section>
 
-        <section className="section-muted border-y border-[var(--cp-border)] py-16 sm:py-20">
+        <section
+          className="border-t border-[var(--cp-border)] bg-[var(--cp-surface)] py-16 sm:py-20"
+          aria-labelledby="visual-strip-heading">
           <div className="mx-auto max-w-5xl px-4 sm:px-6">
-            <h2 className="text-2xl font-semibold">Why CarePair exists</h2>
-            <p className="mt-4 max-w-3xl leading-relaxed text-[var(--cp-ink-muted)]">{site.problem}</p>
-            <p className="mt-4 max-w-3xl font-medium leading-relaxed text-[var(--cp-ink)]">{site.solution}</p>
-            <ul className="mt-8 space-y-3">
-              {site.trust.map((line) => (
-                <li key={line} className="flex gap-3 text-sm text-[var(--cp-ink-muted)]">
-                  <span
-                    className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-[var(--cp-primary)]"
-                    aria-hidden
-                  />
-                  {line}
+            <RevealOnView>
+              <h2 id="visual-strip-heading" className="text-2xl font-semibold">
+                {homeVisual.title}
+              </h2>
+            </RevealOnView>
+            <RevealOnView delayMs={50}>
+              <p className="mt-3 max-w-3xl text-[var(--cp-ink-muted)]">{homeVisual.intro}</p>
+            </RevealOnView>
+            <ul className="mt-10 grid gap-6 md:grid-cols-3">
+              {homeVisual.frames.map((frame, i) => (
+                <li key={frame.id}>
+                  <RevealOnView delayMs={i * 60}>
+                    <MediaPlaceholder ratio="16/9" label={frame.label} hint="PNG or WebP from the app build." />
+                  </RevealOnView>
                 </li>
               ))}
             </ul>
-            <p className="mt-8 text-sm font-medium text-[var(--cp-ink-muted)]">{site.nativeProduct}</p>
           </div>
         </section>
 
-        <section id="features" className="mx-auto max-w-5xl scroll-mt-24 px-4 py-16 sm:px-6 sm:py-20">
-          <h2 className="text-2xl font-semibold">Inside the app</h2>
-          <p className="mt-2 max-w-2xl text-sm text-[var(--cp-ink-muted)]">
-            Everything below is available in the native apps after you create an account.
-          </p>
-          <ul className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {site.features.map((f) => (
-              <li key={f.title} className="card card-feature">
-                <div className="card-icon" aria-hidden>
-                  {f.title.charAt(0)}
-                </div>
-                <h3 className="card-title">{f.title}</h3>
-                <p className="card-body">{f.body}</p>
-              </li>
-            ))}
-          </ul>
-        </section>
-
-        <section id="pricing" className="pricing-band scroll-mt-24 py-16 sm:py-20">
+        <section className="border-t border-[var(--cp-border)] bg-[var(--cp-bg)] py-16 sm:py-20" aria-labelledby="explore-heading">
           <div className="mx-auto max-w-5xl px-4 sm:px-6">
-            <h2 className="text-2xl font-semibold">Pricing</h2>
-            <p className="mt-4 max-w-2xl leading-relaxed">
-              <span className="tabular-price font-semibold text-white">{site.pricing.familyMonthly}</span> for the
-              family subscription, following a <span className="font-semibold text-white">{site.pricing.trial}</span>.{' '}
-              {site.pricing.caregiver}.
-            </p>
-            <p className="pricing-muted mt-4 max-w-2xl text-sm leading-relaxed">{site.pricing.note}</p>
-            <p className="pricing-fine mt-6 max-w-2xl">
-              Apple App Store and Google Play may process certain purchases according to their policies. Nothing on this
-              page overrides the in-app purchase or checkout disclosures you see before paying.
-            </p>
+            <RevealOnView>
+              <h2 id="explore-heading" className="text-2xl font-semibold">
+                {homePage.exploreTitle}
+              </h2>
+            </RevealOnView>
+            <RevealOnView delayMs={40}>
+              <p className="mt-3 max-w-2xl text-[var(--cp-ink-muted)]">{homePage.exploreIntro}</p>
+            </RevealOnView>
+            <ul className="mt-10 grid gap-6 sm:grid-cols-2 xl:grid-cols-4">
+              {homePage.cards.map((card, i) => (
+                <li key={card.href}>
+                  <RevealOnView delayMs={i * 50}>
+                    <Link
+                      href={card.href}
+                      className="card cp-explore-card flex h-full flex-col no-underline focus-visible:outline focus-visible:outline-[2.5px] focus-visible:outline-offset-[3px] focus-visible:outline-[var(--cp-primary)]">
+                      <h3 className="card-title text-[var(--cp-primary)]">{card.title}</h3>
+                      <p className="card-body mt-2 flex-1">{card.description}</p>
+                      <span className="link-cp mt-4 inline-block text-sm font-medium">Read more</span>
+                    </Link>
+                  </RevealOnView>
+                </li>
+              ))}
+            </ul>
           </div>
         </section>
-
-        <ContactInquirySection headingLevel="h2" />
       </main>
 
       <SiteFooter />

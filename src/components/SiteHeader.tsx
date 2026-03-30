@@ -4,8 +4,9 @@ import { BrandLogo } from '@/components/BrandLogo';
 import { site } from '@/lib/site';
 
 const nav = [
-  { href: '/#features', label: 'Product' },
-  { href: '/#pricing', label: 'Pricing' },
+  { href: '/product', label: 'Product' },
+  { href: '/about', label: 'About' },
+  { href: '/pricing', label: 'Pricing' },
   { href: '/contact', label: 'Contact' },
   { href: '/privacy', label: 'Privacy' },
   { href: '/terms', label: 'Terms' },
@@ -21,7 +22,7 @@ export function SiteHeader() {
             <Link
               key={item.href}
               href={item.href}
-              className="text-[var(--cp-ink-muted)] transition-colors duration-[140ms] [transition-timing-function:cubic-bezier(0.22,1,0.36,1)] hover:text-[var(--cp-ink)]">
+              className="cp-nav-link text-[var(--cp-ink-muted)] pb-0.5">
               {item.label}
             </Link>
           ))}

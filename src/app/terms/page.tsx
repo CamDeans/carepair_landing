@@ -2,11 +2,12 @@ import type { Metadata } from 'next';
 
 import { SiteFooter } from '@/components/SiteFooter';
 import { SiteHeader } from '@/components/SiteHeader';
+import { termsPage as termsCopy } from '@/content/legal';
 import { site } from '@/lib/site';
 
 export const metadata: Metadata = {
   title: 'Terms of use',
-  description: `Terms governing use of the ${site.name} marketing website. App terms are presented in the mobile product.`,
+  description: termsCopy.metaDescription,
 };
 
 export default function TermsPage() {
@@ -16,6 +17,7 @@ export default function TermsPage() {
       <article className="mx-auto max-w-3xl flex-1 px-4 py-12 sm:px-6 sm:py-16" id="main">
         <h1 className="text-3xl font-semibold">Terms of use</h1>
         <p className="mt-2 text-sm font-medium text-[var(--cp-primary)]">Last updated: March 29, 2026</p>
+        <p className="mt-6 text-sm leading-relaxed text-[var(--cp-ink-muted)]">{termsCopy.intro}</p>
 
         <div className="mt-8 max-w-none space-y-3 text-sm leading-relaxed text-[var(--cp-ink-muted)]">
           <p className="notice-cp">
@@ -28,6 +30,9 @@ export default function TermsPage() {
             By accessing this website, you agree to these terms. If you do not agree, do not use the site. The {site.name}{' '}
             mobile applications are governed by separate terms presented in the app.
           </p>
+
+          <h2 className="mt-10 text-lg font-semibold">{termsCopy.acceptableUseTitle}</h2>
+          <p className="mt-3">{termsCopy.acceptableUseBody}</p>
 
           <h2 className="mt-10 text-lg font-semibold">Not professional advice</h2>
           <p className="mt-3">
@@ -48,14 +53,25 @@ export default function TermsPage() {
             jurisdiction.
           </p>
 
+          <h2 className="mt-10 text-lg font-semibold">{termsCopy.ipTitle}</h2>
+          <p className="mt-3">{termsCopy.ipBody}</p>
+
+          <h2 className="mt-10 text-lg font-semibold">{termsCopy.thirdPartyTitle}</h2>
+          <p className="mt-3">{termsCopy.thirdPartyBody}</p>
+
           <h2 className="mt-10 text-lg font-semibold">Subscriptions and payments</h2>
           <p className="mt-3">
             Fees, trials, and renewals for {site.name} are described in the app and checkout flows. App Store and Google
             Play may apply additional terms when you purchase through those platforms.
           </p>
+          <p className="mt-3">{termsCopy.subscriptionsExtra}</p>
+
+          <h2 className="mt-10 text-lg font-semibold">{termsCopy.disputeTitle}</h2>
+          <p className="mt-3">{termsCopy.disputeBody}</p>
 
           <h2 className="mt-10 text-lg font-semibold">Changes</h2>
           <p className="mt-3">We may update these terms. The &quot;Last updated&quot; date will change when we do.</p>
+          <p className="mt-3">{termsCopy.changesExtra}</p>
         </div>
       </article>
       <SiteFooter />

@@ -3,8 +3,7 @@ import Link from 'next/link';
 import { BrandLogo } from '@/components/BrandLogo';
 import { site, storeLinks } from '@/lib/site';
 
-const footerLink =
-  'text-[var(--cp-ink-muted)] underline-offset-4 transition-colors duration-[140ms] [transition-timing-function:cubic-bezier(0.22,1,0.36,1)] hover:text-[var(--cp-primary)] hover:underline';
+const footerLink = 'cp-nav-link text-[var(--cp-ink-muted)] pb-0.5';
 
 export function SiteFooter() {
   const { contact } = storeLinks();
@@ -19,6 +18,15 @@ export function SiteFooter() {
             <p className="mt-3 max-w-sm text-sm text-[var(--cp-ink-muted)]">{site.nativeProduct}</p>
           </div>
           <div className="flex flex-col gap-2 text-sm">
+            <Link href="/product" className={footerLink}>
+              Product
+            </Link>
+            <Link href="/about" className={footerLink}>
+              About
+            </Link>
+            <Link href="/pricing" className={footerLink}>
+              Pricing
+            </Link>
             <Link href="/contact" className={footerLink}>
               Contact &amp; early access
             </Link>

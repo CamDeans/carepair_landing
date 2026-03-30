@@ -60,21 +60,34 @@ export const site = {
   contact: {
     sectionTitle: 'Support, partnerships & early access',
     sectionIntro:
-      'Choose a topic and write your note. Your email app opens with a pre-filled message — nothing is sent until you confirm.',
+      'Choose a topic and send your note. When secure delivery is configured for this site, your message goes straight to our inbox; otherwise the form opens a draft in your mail app — nothing sends until you confirm there.',
     formTopicLabel: 'Topic',
     formNameLabel: 'Name (optional)',
-    formEmailLabel: 'Your email (optional)',
-    formEmailHelp: 'So we can reply if your “from” address is not obvious.',
+    formEmailLabel: 'Your email',
+    formEmailLabelOptional: 'Your email (optional)',
+    formEmailHelp:
+      'Required when the site sends the message for you. Optional when you only open a draft in your own mail app.',
     formMessageLabel: 'Message',
     formMessagePlaceholder: 'How can we help?',
-    formSubmitLabel: 'Open in email app',
-    formHint:
-      'This site does not transmit your message directly. It only prepares an email draft in your own mail client.',
+    formSubmitLabelApi: 'Send message',
+    formSubmitLabelMailto: 'Open in email app',
+    formHintApi:
+      'Your message is delivered by our host to the inbox we monitor. If something fails, you can try again without retyping everything.',
+    formHintMailto:
+      'This deployment opens your email app with a pre-filled draft only. Nothing is transmitted from this page until you send from your mail client.',
+    formSuccessTitle: 'Message sent',
+    formSuccessBody:
+      'Thanks — we received your note. If it is urgent, you can send another message below; please avoid duplicate threads when possible.',
+    formErrorBody:
+      'We could not deliver that just now. Check your connection and try again, or use the mail-app option if it is available.',
+    formResendLabel: 'Try again',
+    formSendAnotherLabel: 'Send another message',
     validationShort: 'Please add a bit more detail (at least 10 characters).',
     validationEmail: 'If you enter an email, use a valid address.',
-    noChannelTitle: 'Contact channel not live yet',
+    validationEmailRequired: 'Enter the email address you want us to reply to.',
+    noChannelTitle: 'Contact is not configured yet',
     noChannelBody:
-      'Our public inbox is not configured on this deployment. When the apps launch, use store listings for installs and check back here for a contact form.',
+      'Add Resend and inbox environment variables for secure delivery, or set a public contact email for the mail-app draft flow. See landing/.env.example.',
   },
 } as const;
 

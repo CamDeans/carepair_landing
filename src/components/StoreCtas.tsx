@@ -59,7 +59,7 @@ export function StoreCtas() {
   }
 
   return (
-    <div className="card card-static max-w-xl">
+    <div className="card card-static card-soft max-w-xl">
       <p className="card-title">iOS & Android apps</p>
       <p className="card-body mt-1">
         Public store listings are being finalized. Interested in early access or partnerships? Use the{' '}
