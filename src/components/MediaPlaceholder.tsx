@@ -24,8 +24,8 @@ export function MediaPlaceholder({ label, ratio = '16/9', hint, className = '' }
     <div
       role="img"
       aria-label={label}
-      className={`cp-media-slot flex flex-col items-center justify-center gap-2 rounded-[var(--cp-radius-lg)] border-2 border-dashed border-[var(--cp-primary-mid)]/35 bg-[var(--cp-primary-light)]/40 text-center ${ratioClass[ratio]} w-full min-h-0 ${className}`.trim()}>
-      <span className="max-w-[90%] px-3 text-xs font-medium leading-snug text-[var(--cp-primary)]">{label}</span>
+      className={`cp-media-slot flex flex-col items-center justify-center gap-2 rounded-[var(--cp-radius-lg)] border-2 border-dashed border-[var(--cp-border-strong)] bg-[var(--cp-surface-muted)] text-center ${ratioClass[ratio]} w-full min-h-0 ${className}`.trim()}>
+      <span className="max-w-[90%] px-3 text-xs font-medium leading-snug text-[var(--cp-ink-muted)]">{label}</span>
       {hint ? <span className="max-w-[90%] px-3 text-[11px] leading-snug text-[var(--cp-ink-subtle)]">{hint}</span> : null}
     </div>
   );

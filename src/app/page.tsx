@@ -76,7 +76,7 @@ export default function HomePage() {
         </section>
 
         <section
-          className="border-t border-[var(--cp-border)] bg-[var(--cp-surface)] py-16 sm:py-20"
+          className="border-t border-[var(--cp-border)] bg-[var(--cp-surface-muted)] py-16 sm:py-20"
           aria-labelledby="visual-strip-heading">
           <div className="mx-auto max-w-5xl px-4 sm:px-6">
             <RevealOnView>
@@ -115,7 +115,7 @@ export default function HomePage() {
                   <RevealOnView delayMs={i * 50}>
                     <Link
                       href={card.href}
-                      className="card cp-explore-card flex h-full flex-col no-underline focus-visible:outline focus-visible:outline-[2.5px] focus-visible:outline-offset-[3px] focus-visible:outline-[var(--cp-primary)]">
+                      className="card cp-explore-card flex h-full flex-col no-underline focus-visible:outline focus-visible:outline-[2.5px] focus-visible:outline-offset-[3px] focus-visible:outline-[var(--cp-focus-ring)]">
                       <h3 className="card-title text-[var(--cp-primary)]">{card.title}</h3>
                       <p className="card-body mt-2 flex-1">{card.description}</p>
                       <span className="link-cp mt-4 inline-block text-sm font-medium">Read more</span>

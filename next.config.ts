@@ -8,6 +8,8 @@ const securityHeaders = [
 
 const nextConfig: NextConfig = {
   reactStrictMode: true,
+  /** Avoid bundling Resend into webpack; prevents runtime "reading 'call'" chunk errors on /contact in prod. */
+  serverExternalPackages: ['resend'],
   images: {
     dangerouslyAllowSVG: true,
     contentDispositionType: 'attachment',

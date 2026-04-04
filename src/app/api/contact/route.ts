@@ -1,7 +1,8 @@
 import { NextResponse } from 'next/server';
-import { Resend } from 'resend';
 
 import { isContactApiConfigured } from '@/lib/contactEnv';
+
+export const runtime = 'nodejs';
 import { CONTACT_INQUIRY_TOPICS } from '@/lib/site';
 
 const TOPIC_IDS: ReadonlySet<string> = new Set(CONTACT_INQUIRY_TOPICS.map((t) => t.id));
@@ -78,6 +79,7 @@ export async function POST(request: Request) {
   ];
   const text = textLines.filter(Boolean).join('\n');
 
+  const { Resend } = await import('resend');
   const resend = new Resend(key);
   const { data, error } = await resend.emails.send({
     from,
