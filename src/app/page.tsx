@@ -87,7 +87,7 @@ export default function HomePage() {
             <RevealOnView delayMs={50}>
               <p className="mt-3 max-w-3xl text-[var(--cp-ink-muted)]">{homeVisual.intro}</p>
             </RevealOnView>
-            <ul className="mt-10 grid gap-6 md:grid-cols-3">
+            <ul className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
               {homeVisual.frames.map((frame, i) => (
                 <li key={frame.id}>
                   <RevealOnView delayMs={i * 60}>

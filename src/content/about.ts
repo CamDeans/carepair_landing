@@ -56,10 +56,11 @@ export const aboutPage = {
 export const homeVisual = {
   title: 'Built for real care workflows',
   intro:
-    'Screenshots and motion from the apps will land in these frames — aligned with discovery, messaging, and CareSpace so visitors know what to expect.',
+    'Screenshots from the iOS and Android builds should mirror these areas: discovery and Saved, messaging after a match, meet-ups, and CareSpace — so the site matches what users download.',
   frames: [
-    { id: 'discover', label: 'Discovery — add app screenshot' },
+    { id: 'discover', label: 'Discover & Saved — add app screenshot' },
     { id: 'messages', label: 'Messages — add app screenshot' },
+    { id: 'meetups', label: 'Meet-ups — add app screenshot' },
     { id: 'carespace', label: 'CareSpace — add app screenshot' },
   ] as const,
 } as const;

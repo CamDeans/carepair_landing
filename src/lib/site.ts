@@ -1,7 +1,18 @@
 /**
  * CarePair marketing copy — keep aligned with the native app product (see monorepo `mobile/` and scope doc).
+ * Shared pricing, features, and trial length live in `brand/product-copy.ts` (imported below).
  * Store URLs and contact come from env (`NEXT_PUBLIC_*`).
+ *
+ * Parity checklist (consumer app, iOS & Android — same router/features unless a store blocks it):
+ * Tabs: Discover · Messages · CareSpace · Saved · Settings.
+ * Flows: onboarding → auth (email + optional Google) → family/caregiver profile setup → publish → discover (location,
+ * like/pass/heart save) → match → messaging → meet-up proposals & scheduling → CareSpace (trial/subscription for
+ * families: shifts, optional Google Calendar, care notes) · saved list · subscription & billing · notifications
+ * prefs · help · community guidelines · data & privacy (export/delete paths as implemented).
+ * Staff-only (not marketed here): staff portal, valued-tester persona, internal tools.
  */
+
+import { marketingFeatures, productPricing } from '../../../brand/product-copy';
 
 export const site = {
   name: 'CarePair',
@@ -11,14 +22,13 @@ export const site = {
   hero: {
     headline: 'Find care through relationships — not anonymous gig posts.',
     sub:
-      'CarePair helps families and caregivers discover each other, talk in one place, and coordinate schedules and notes in CareSpace once you decide to work together.',
+      'Native iOS and Android apps help families and caregivers discover each other (location-aware profiles), message after a mutual match, propose meet-ups, save profiles to revisit, and — when you agree to work together — run shifts and care notes in CareSpace (families: trial then subscription).',
   },
   pricing: {
-    familyMonthly: '$19.99 CAD / month',
-    trial: '7-day trial for families',
-    caregiver: 'Caregivers use core matching and messaging at no charge',
-    note:
-      'Subscription is billed to the family account through our payment provider when both sides agree to move forward. Exact terms are shown in the app before you pay.',
+    familyMonthly: productPricing.familyMonthlyCad,
+    trial: productPricing.trialMarketingShort,
+    caregiver: productPricing.caregiverNoChargeLine,
+    note: productPricing.subscriptionNote,
   },
   problem:
     'Traditional listings and group chats scatter trust, availability, and history across too many tools. Families burn time; caregivers lose context.',
@@ -26,32 +36,7 @@ export const site = {
     'CarePair keeps discovery, conversation, and shared scheduling in one native experience — so you can focus on fit, safety, and continuity of care.',
   nativeProduct:
     'CarePair is delivered as native iOS and Android apps. This website is for information only — you sign up and subscribe inside the app.',
-  features: [
-    {
-      title: 'Thoughtful discovery',
-      body: 'Location-aware profiles with the context families and caregivers need to evaluate fit — not a blind swipe factory.',
-    },
-    {
-      title: 'In-app messaging',
-      body: 'Keep introductions and ongoing coordination in one thread with the people you have matched with.',
-    },
-    {
-      title: 'CareSpace',
-      body: 'After you connect, share shifts, confirmations, and care notes in a dedicated workspace for your match.',
-    },
-    {
-      title: 'Scheduling you can trust',
-      body: 'Families propose times; caregivers confirm or request changes so expectations stay explicit.',
-    },
-    {
-      title: 'Google Calendar (optional)',
-      body: 'Link Google Calendar so confirmed shifts can appear on the primary calendars you already use.',
-    },
-    {
-      title: 'Family subscription',
-      body: 'Stripe-backed billing for the family plan after trial, with access managed inside the app.',
-    },
-  ],
+  features: marketingFeatures,
   trust: [
     'We design for calm, professional communication — not noisy feeds.',
     'You control who you match and message with.',

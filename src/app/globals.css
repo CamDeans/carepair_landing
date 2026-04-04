@@ -2,34 +2,34 @@
 @tailwind components;
 @tailwind utilities;
 
-/* === CarePair visual spec — see brand/CAREPAIR-VISUAL-SPEC.md === */
+/* === CarePair visual spec — rose primary, blush highlights (no yellow/peach tint) === */
 :root {
-  --cp-primary: #ff7052;
-  --cp-primary-mid: #ff8a6f;
-  --cp-primary-light: #ffd4cb;
+  --cp-primary: #e4566c;
+  --cp-primary-mid: #f06e84;
+  --cp-primary-light: #f8cdd8;
   --cp-primary-dark: #1a2733;
-  --cp-brand-yellow: #ff8a6f;
-  --cp-brand-yellow-tint: #ffe8e4;
-  --cp-brand-yellow-text: #6b2418;
-  --cp-accent: #ff7052;
-  --cp-accent-light: #ffd4cb;
-  --cp-accent-dark: #e85a3c;
+  --cp-brand-yellow: #f07890;
+  --cp-brand-yellow-tint: #fff1f4;
+  --cp-brand-yellow-text: #5e2a3d;
+  --cp-accent: #e4566c;
+  --cp-accent-light: #f8cdd8;
+  --cp-accent-dark: #c73e5a;
   --cp-bg: #ffffff;
-  --cp-surface-muted: #f7f9fc;
+  --cp-surface-muted: #f8f5f7;
   --cp-surface: #ffffff;
   --cp-ink: #1a2733;
   --cp-ink-muted: #7a8a99;
   --cp-ink-subtle: #b0bcc8;
-  --cp-border: #edf0f5;
-  --cp-border-strong: #dde2eb;
+  --cp-border: #ede8ec;
+  --cp-border-strong: #ded5dc;
   --cp-success: #3ec882;
   --cp-success-tint: #c0f0d8;
   --cp-success-text: #0a3d22;
-  --cp-warning: #ba7517;
+  --cp-warning: #b85c3a;
   --cp-error: #c94a4a;
-  --cp-focus-ring: #ff7052;
-  --cp-pressed: #f0f3f7;
-  --cp-disabled-bg: #edf0f5;
+  --cp-focus-ring: #e4566c;
+  --cp-pressed: #f0ecef;
+  --cp-disabled-bg: #ede8ec;
   --cp-radius-sm: 6px;
   --cp-radius-md: 10px;
   --cp-radius-lg: 16px;
@@ -42,39 +42,40 @@
   --cp-font-heading: var(--font-plus-jakarta), 'Plus Jakarta Sans', system-ui, sans-serif;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --cp-primary: #ff8a72;
-    --cp-primary-mid: #ffa48f;
-    --cp-primary-light: #4a2820;
-    --cp-primary-dark: #e8edf5;
-    --cp-brand-yellow: #ff9a84;
-    --cp-brand-yellow-tint: #3d2420;
-    --cp-brand-yellow-text: #ffd4cb;
-    --cp-accent: #ff8a72;
-    --cp-accent-light: #4a2820;
-    --cp-accent-dark: #ffb09e;
-    --cp-bg: #0f1419;
-    --cp-surface-muted: #151c28;
-    --cp-surface: #1a2332;
-    --cp-ink: #e8edf5;
-    --cp-ink-muted: #9ca8b8;
-    --cp-ink-subtle: #6b7788;
-    --cp-border: rgba(232, 237, 245, 0.12);
-    --cp-border-strong: rgba(232, 237, 245, 0.22);
-    --cp-success: #4cd998;
-    --cp-success-tint: #1a3d2e;
-    --cp-success-text: #b8f0d4;
-    --cp-error: #f08080;
-    --cp-focus-ring: #ff8a72;
-    --cp-pressed: #242d3d;
-    --cp-disabled-bg: #1f2836;
-  }
+/* Dark palette — toggled with `class="dark"` on <html> (see ThemeProvider). Default is light; no forced OS dark. */
+html.dark {
+  --cp-primary: #f07890;
+  --cp-primary-mid: #f48ba0;
+  --cp-primary-light: #4a2832;
+  --cp-primary-dark: #e8edf5;
+  --cp-brand-yellow: #f8a0b2;
+  --cp-brand-yellow-tint: #3d252e;
+  --cp-brand-yellow-text: #ffd6e0;
+  --cp-accent: #f07890;
+  --cp-accent-light: #4a2832;
+  --cp-accent-dark: #f5a0b4;
+  --cp-bg: #0f1419;
+  --cp-surface-muted: #16141a;
+  --cp-surface: #1a1e26;
+  --cp-ink: #e8edf5;
+  --cp-ink-muted: #9ca8b8;
+  --cp-ink-subtle: #6b7788;
+  --cp-border: rgba(240, 220, 230, 0.12);
+  --cp-border-strong: rgba(240, 220, 230, 0.2);
+  --cp-success: #4cd998;
+  --cp-success-tint: #1a3d2e;
+  --cp-success-text: #b8f0d4;
+  --cp-error: #f08080;
+  --cp-focus-ring: #f07890;
+  --cp-pressed: #24202a;
+  --cp-disabled-bg: #1f1c24;
+  color-scheme: dark;
 }
 
 @layer base {
   html {
     font-size: 16px;
+    color-scheme: light;
   }
 
   body {
@@ -152,7 +153,7 @@
     box-shadow:
       0 0 0 1px rgba(255, 255, 255, 0.12) inset,
       0 0 0 4px var(--cp-primary-light),
-      0 8px 28px -6px rgba(255, 112, 82, 0.45),
+      0 8px 28px -6px rgba(228, 86, 108, 0.45),
       0 16px 40px -16px rgba(26, 39, 51, 0.12);
   }
 
@@ -164,7 +165,7 @@
 
   .btn-secondary:hover {
     background: var(--cp-primary-light);
-    box-shadow: 0 4px 20px -8px rgba(255, 112, 82, 0.35);
+    box-shadow: 0 4px 20px -8px rgba(228, 86, 108, 0.35);
   }
 
   .btn-ghost {
@@ -288,7 +289,7 @@
     transform: translateY(-3px);
     box-shadow:
       0 0 0 1px color-mix(in srgb, var(--cp-primary) 12%, transparent),
-      0 12px 40px -12px rgba(255, 112, 82, 0.22),
+      0 12px 40px -12px rgba(228, 86, 108, 0.22),
       0 16px 48px -20px rgba(26, 39, 51, 0.08);
   }
 
@@ -525,7 +526,7 @@
     .cp-media-slot:hover {
       transform: scale(1.02);
       border-color: var(--cp-primary-mid);
-      box-shadow: 0 14px 40px -12px rgba(255, 112, 82, 0.28);
+      box-shadow: 0 14px 40px -12px rgba(228, 86, 108, 0.28);
     }
   }
 
@@ -552,10 +553,8 @@
     backdrop-filter: blur(8px);
   }
 
-  @media (prefers-color-scheme: dark) {
-    .header-cp {
-      background: color-mix(in srgb, var(--cp-surface) 92%, transparent);
-    }
+  html.dark .header-cp {
+    background: color-mix(in srgb, var(--cp-surface) 92%, transparent);
   }
 
   .footer-cp {
@@ -590,11 +589,6 @@
     color: var(--cp-ink);
   }
 
-  @media (prefers-color-scheme: dark) {
-    .notice-cp {
-      background: var(--cp-accent-light);
-    }
-  }
 }
 
 .cp-reveal {

@@ -12,7 +12,7 @@ export const homePage = {
       href: '/product',
       title: 'Product',
       description:
-        'Why we built CarePair, how discovery and CareSpace work, and what you get in the native apps for families and caregivers.',
+        'Discovery, Saved, Messages, meet-ups, and CareSpace — what the iOS and Android apps actually include for families and caregivers.',
     },
     {
       href: '/about',
@@ -40,7 +40,7 @@ export const productPage = {
   metaDescription:
     'CarePair product overview: relationship-first matching, messaging, CareSpace scheduling and notes, and native iOS & Android apps for Alberta families.',
   intro:
-    'CarePair is a care marketplace built around relationships — not anonymous gig posts. Families and caregivers use native apps to discover each other, have structured conversations, and, when there is a mutual fit, coordinate ongoing care in a shared workspace called CareSpace.',
+    'CarePair is a care marketplace built around relationships — not anonymous gig posts. The same native apps on iOS and Android give families and caregivers location-aware discovery (like, pass, or save to a shortlist), messaging after a mutual match, meet-up proposals, and — when you agree to work together — CareSpace for shifts, optional Google Calendar sync, and care notes. Families unlock CareSpace after trial via subscription; caregivers are not charged a parallel family plan for core matching, messaging, or CareSpace use.',
   missionTitle: 'What we are optimizing for',
   missionBody:
     'We believe the hardest part of arranging care is not posting a job — it is building enough context to trust someone with your routine, your children, and your communication style. CarePair keeps that context in one place so both sides can move deliberately from introduction to a working relationship.',
@@ -58,30 +58,35 @@ export const productPage = {
   trustExtra: [
     'Calm, professional communication by default — we avoid noisy feeds and engagement tricks.',
     'You decide who you match and message with; discovery does not bypass your consent.',
+    'Community guidelines, help, notification preferences, and data & privacy tools live in the app under Settings.',
     'Native apps let us align with platform expectations for sign-in, notifications, and payments where stores are involved.',
   ] as const,
   featuresPreamble:
     'Below is a capability-level view of what the apps are built to support after you create an account. Exact availability can evolve with releases; the in-app experience is always the source of truth.',
   nativeTitle: 'Where you actually use CarePair',
   nativeBody:
-    'CarePair ships as native iOS and Android applications. This website is for learning and outreach only: you sign up, manage your profile, match, message, subscribe, and use CareSpace inside the apps. Store listings and in-app screens are the right place to verify current flows before you pay.',
+    'CarePair ships as the same native experience on iOS and Android (feature parity for families and caregivers, aside from normal platform differences). This website is for learning and outreach only: you sign up with email or Google where enabled, build your profile, match, message, handle meet-ups, subscribe as a family, and use CareSpace inside the apps. Store listings and in-app screens are the right place to verify current flows before you pay.',
   howItWorksTitle: 'How the journey typically flows',
   howItWorks: [
     {
       title: 'Profiles & discovery',
-      body: 'Families and caregivers complete profiles with the context each side needs to evaluate fit. Discovery is built to surface relevant people — not to maximize endless swipes.',
+      body: 'Families and caregivers complete profiles (including photos and, where relevant, supporting documents stored privately). Discovery uses your area settings; you can like, pass, or save profiles to revisit from the Saved tab.',
     },
     {
       title: 'Connect & message',
-      body: 'When there is mutual interest, you connect and keep introductions and follow-ups in a dedicated thread tied to that relationship.',
+      body: 'When there is mutual interest, you match and keep conversation in Messages — one thread per connection.',
+    },
+    {
+      title: 'Meet-ups',
+      body: 'Use meet-up scheduling and proposals in the app to agree on in-person time without leaving the product.',
     },
     {
       title: 'CareSpace after alignment',
-      body: 'When you agree to work together, CareSpace becomes the shared home for proposed shifts, confirmations, and care notes — with optional calendar integration for confirmed times.',
+      body: 'When you decide to work together, CareSpace holds shifts, confirmations, and care notes for that match. Families move through trial to subscription for continued access; optional Google Calendar linking keeps your primary calendar in sync.',
     },
     {
       title: 'Family subscription path',
-      body: 'Families who continue past trial subscribe through the payment path presented in the app; caregivers use core matching and messaging without a parallel family subscription.',
+      body: 'Families who continue past the trial subscribe through Stripe checkout in the app. Caregivers are not sold a separate family subscription for core matching, messaging, or CareSpace.',
     },
   ] as const,
 } as const;
@@ -102,7 +107,7 @@ export const pricingPage = {
   ] as const,
   caregiverTitle: 'Caregivers',
   caregiverBody:
-    'Caregivers use core matching and messaging without a CarePair subscription fee parallel to the family plan. If we introduce optional paid caregiver features in the future, they will be disclosed in-app before any charge.',
+    'Caregivers use core matching, messaging, meet-ups, and CareSpace without a CarePair subscription fee parallel to the family plan. If we introduce optional paid caregiver features in the future, they will be disclosed in-app before any charge.',
   trialTitle: 'Trial',
   trialBody:
     'Families see a clear trial window in the product before a subscription begins. If you cancel during the trial according to the rules shown in the app and by the store, you should not be charged for that period — follow the store and in-app instructions for your account.',

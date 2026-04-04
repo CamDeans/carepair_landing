@@ -1,10 +1,15 @@
 import type { Metadata } from 'next';
 import { Plus_Jakarta_Sans } from 'next/font/google';
+import Script from 'next/script';
 
 import { JsonLdOrganization } from '@/components/JsonLd';
+import { ThemeProvider } from '@/components/ThemeProvider';
 import { site } from '@/lib/site';
 import { getSiteOrigin } from '@/lib/siteUrl';
 import './globals.css';
+
+/** Runs before paint: default light; respect saved choice + system preference when mode is system. */
+const LANDING_THEME_BOOT = `(function(){try{var k='carepair-landing-theme';var t=localStorage.getItem(k)||'light';var d=t==='dark'||(t==='system'&&window.matchMedia('(prefers-color-scheme: dark)').matches);document.documentElement.classList.toggle('dark',d);}catch(e){}})();`;
 
 const plusJakarta = Plus_Jakarta_Sans({
   subsets: ['latin'],
@@ -49,10 +54,15 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en-CA">
+    <html lang="en-CA" suppressHydrationWarning>
       <body className={`${plusJakarta.variable} min-h-screen font-sans`}>
-        <JsonLdOrganization />
-        {children}
+        <Script id="carepair-landing-theme-boot" strategy="beforeInteractive">
+          {LANDING_THEME_BOOT}
+        </Script>
+        <ThemeProvider>
+          <JsonLdOrganization />
+          {children}
+        </ThemeProvider>
       </body>
     </html>
   );
